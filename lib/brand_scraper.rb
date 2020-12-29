@@ -1,5 +1,4 @@
-require 'nokogiri'
-require 'open-uri'
+
 
 class BrandScraper(page_number = 1)
 

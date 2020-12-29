@@ -1,3 +1,5 @@
+
+
 class Cigar
     attr_accessor :name, :brand, :length, :gauge, :country, :strength
     @@all = []

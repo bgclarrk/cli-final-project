@@ -1,10 +1,11 @@
-require 'pry'
+
 
 class CLI
-    attr_reader :page_number
+    attr_accessor :page_number
 
     def initialize
         brand_scraper.new
+        @page_number = 0
     end
 
     def call

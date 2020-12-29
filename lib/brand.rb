@@ -1,3 +1,5 @@
+
+
 class Brand
     attr_accessor :name
     @@all = []
