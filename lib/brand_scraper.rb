@@ -1,9 +1,8 @@
 require 'nokogiri'
 require 'open-uri'
 
-page_number = 1
+class BrandScraper(page_number = 1)
 
-while page_number < 70
     html = open("http://www.cigargeeks.com/cigardb/default.asp?action=&page=#{page_number}")
 
     doc = Nokogiri::HTML(html)
@@ -20,7 +19,5 @@ while page_number < 70
         brands << brands_hash
         i += 1
     end
-    page_number += 1
-end
 
-brands
+end

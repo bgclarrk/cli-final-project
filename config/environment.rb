@@ -6,6 +6,7 @@ require 'pry'
 
 Bundler.require
 
+require_relative '../lib/cli.rb'
 require_relative '../lib/brand_scraper.rb'
 require_relative '../lib/cigar.rb'
 require_relative '../lib/brand.rb'
