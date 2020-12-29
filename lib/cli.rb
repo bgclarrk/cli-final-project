@@ -3,21 +3,24 @@
 class CLI
     attr_accessor :page_number
 
-    def initialize
-        brand_scraper.new
-        @page_number = 0
-    end
-
     def call
         puts "Welcome to your source for all cigar brands and cigars!"
-        self.display
+        menu
     end
 
-    def display
-        i = 0
-        while i < brands.count
-            puts brands[id]
-            i += 1
+    def menu
+        puts "To see a list of cigar brands and their cigars, type 'Brands'."
+        puts "To exit the program, type 'Exit'."
+
+        @user_input = gets.strip.downcase
+        
+        if @user_input == "brands"
+            get_page
+        elsif @user_input == "exit"
+            puts "Thank you for stopping by!"
+        else
+            puts "Invalid input:"
+            menu
         end
     end
 
@@ -25,10 +28,10 @@ class CLI
         loop do
             puts "Please choose a page number between 1 and 70"
             @page_number = gets.chomp.to_i
-            break if page_number.between?(1, 70)
+            break if @page_number.between?(1, 70)
             puts "Invalid input:  Please choose a page number between 1 and 70"
         end
-        page_number
+        BrandScraper.new(@page_number)
     end
-
+    
 end

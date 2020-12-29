@@ -1,7 +1,7 @@
 
 
 class BrandScraper(page_number = 1)
-
+    page_number = 1
     html = open("http://www.cigargeeks.com/cigardb/default.asp?action=&page=#{page_number}")
 
     doc = Nokogiri::HTML(html)
