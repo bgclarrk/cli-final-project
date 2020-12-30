@@ -1,22 +1,28 @@
 
 
-class BrandScraper(page_number = 1)
-    page_number = 1
-    html = open("http://www.cigargeeks.com/cigardb/default.asp?action=&page=#{page_number}")
+class BrandScraper
 
-    doc = Nokogiri::HTML(html)
+    def new_from_url(page_number = 1)
+        @page_number = page_number
+        html = open("http://www.cigargeeks.com/cigardb/default.asp?action=&page=#{@page_number}")
 
-    brands_data = doc.css(".bbstable .messagecellbody")
+        doc = Nokogiri::HTML(html)
 
-    brands = []
-    i = 1
+        brands_data = doc.css(".bbstable .messagecellbody")
 
-    while i < brands_data.css("a").count
-        name = brands_data.css("a")[i].text
-        link = "http://www.cigargeeks.com/cigardb/" + brands_data.css("a")[i]["href"]
-        brands_hash = { name: name, link: link, id: i }
-        brands << brands_hash
-        i += 1
+        brands = []
+        i = 1
+
+        while i < brands_data.css("a").count
+            name = brands_data.css("a")[i].text
+            link = "http://www.cigargeeks.com/cigardb/" + brands_data.css("a")[i]["href"]
+            id = i
+            Brand.new(name, link, id)
+            brands_hash = { name: name, link: link, id: i }
+            brands << brands_hash
+            i += 1
+        end
+        brands
     end
 
 end

@@ -1,18 +1,17 @@
 
 
 class Brand
-    attr_accessor :name
+    attr_accessor :name, :link, :brand_id
     @@all = []
 
-    def intialize(name)
+    def initialize(name, link, brand_id)
         @name = name
-    end
-
-    def save
+        @link = link
+        @brand_id = brand_id
         @@all << self
     end
 
-    def all
+    def self.all
         @@all
     end
 
