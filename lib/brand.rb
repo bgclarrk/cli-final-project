@@ -15,8 +15,10 @@ class Brand
         @@all
     end
 
-    def get_brand_link_by_id(id)
-        Brand.all.find {| brand | @brand_id == id}
+    def self.get_brand_by_id(id)
+        @@all.find {| brand | brand.brand_id == id}
     end
 
 end
+# first = Brand.new("One", "google.com", 4)
+# second = Brand.new("Two", "bing.com", 1)

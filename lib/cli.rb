@@ -1,7 +1,7 @@
 
 
 class CLI
-    attr_accessor :page_number, :brand_name, :brand_object
+    attr_accessor :page_number
 
     def call
         puts "Welcome to your source for all cigar brands and cigars!"
@@ -61,8 +61,8 @@ class CLI
             break if @brand_id.between?(1, 50)
             puts "Invalid input:  Please choose a brand number between 1 and 50."
         end
-        link = Brand.get_brand_link_by_id(@brand_id)[:id]
-        @cigar_object.new_from_link(link)
+        link = Brand.get_brand_by_id(@brand_id).link
+        @cigar_object.new_from_link(link, Brand.get_brand_by_id(@brand_id).name)
         display_cigars
     end
 
@@ -72,7 +72,9 @@ class CLI
         puts ""
         puts "Thank you! Here are your results:"
         puts ""
-            puts "#{cigar.cigar_id}. #{brand.name}"
+        Cigar.all.each do |cigar|
+            puts "#{cigar.cigar_id}. #{cigar.name}"
+        end
         puts ""
         puts "To return to brands, type 'Brands' again."
         puts "To exit the program, type 'Exit'."
