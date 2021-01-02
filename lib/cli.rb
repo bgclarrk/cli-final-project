@@ -1,12 +1,13 @@
 
 
 class CLI
-    attr_accessor :page_number, :brand_name, :object
+    attr_accessor :page_number, :brand_name, :brand_object
 
     def call
         puts "Welcome to your source for all cigar brands and cigars!"
         puts ""
-        @object = BrandScraper.new
+        @brand_object = BrandScraper.new
+        @cigar_object = CigarScraper.new
         puts "To see a list of cigar brands and their cigars, type 'Brands'."
         puts "To exit the program, type 'Exit'."
         puts ""
@@ -17,9 +18,9 @@ class CLI
         @user_input = gets.strip.downcase
         
         if @user_input == "brands"
-            get_page
+            get_brands
         elsif @user_input == "cigars"
-            get_brand
+            get_cigars
         elsif @user_input == "exit"
             exit
         else
@@ -28,14 +29,14 @@ class CLI
         end
     end
 
-    def get_page
+    def get_brands
         loop do
             puts "Please choose a page number between 1 and 70:"
             @page_number = gets.chomp.to_i
             break if @page_number.between?(1, 70)
             puts "Invalid input:  Please choose a page number between 1 and 70."
         end
-        @object.new_from_url(@page_number)
+        @brand_object.new_from_url(@page_number)
         display_brands
     end
     
@@ -53,21 +54,25 @@ class CLI
         menu
     end
 
-    def get_brand
+    def get_cigars
         loop do
             puts "To see the cigars for a specific brand, type the number associated with that brand:"
             @brand_id = gets.chomp.to_i
             break if @brand_id.between?(1, 50)
             puts "Invalid input:  Please choose a brand number between 1 and 50."
         end
+        link = Brand.get_brand_link_by_id(@brand_id)[:id]
+        @cigar_object.new_from_link(link)
         display_cigars
     end
+
+
 
     def display_cigars
         puts ""
         puts "Thank you! Here are your results:"
         puts ""
-
+            puts "#{cigar.cigar_id}. #{brand.name}"
         puts ""
         puts "To return to brands, type 'Brands' again."
         puts "To exit the program, type 'Exit'."

@@ -15,4 +15,8 @@ class Brand
         @@all
     end
 
+    def get_brand_link_by_id(id)
+        Brand.all.find {| brand | @brand_id == id}
+    end
+
 end

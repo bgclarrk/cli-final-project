@@ -7,5 +7,6 @@ Bundler.require
 
 require_relative '../lib/cli'
 require_relative '../lib/brand_scraper'
+require_relative '../lib/cigar_scraper'
 require_relative '../lib/brand'
 require_relative '../lib/cigar'

@@ -1,7 +1,7 @@
 
 
 class Cigar
-    attr_accessor :name, :brand, :length, :gauge, :country, :strength
+    attr_accessor :name, :brand, :length, :gauge, :country, :filler, :wrapper, :color, :strength
     @@all = []
 
     def initialize(name)
