@@ -21,6 +21,8 @@ class CLI
             get_brands
         elsif @user_input == "cigars"
             get_cigars
+        elsif @user_input == "details"
+            get_details
         elsif @user_input == "exit"
             exit
         else
@@ -66,8 +68,6 @@ class CLI
         display_cigars
     end
 
-
-
     def display_cigars
         puts ""
         puts "Thank you! Here are your results:"
@@ -76,6 +76,36 @@ class CLI
             puts "#{cigar.cigar_id}. #{cigar.name}"
         end
         puts ""
+        puts "To return to brands, type 'Brands' again."
+        puts "To see the details of a cigar type 'Details'."
+        puts "To exit the program, type 'Exit'."
+        menu
+    end
+
+    def get_details
+        total = Brand.cigar_total_by_brand(@brand_id).to_i
+        loop do
+            puts "To see the details for a specific cigar, type the number associated with that cigar:"
+            @cigar_id = gets.chomp.to_i
+            break if @cigar_id.between?(0, 50) #update back to total
+            puts "Invalid input:  Please choose a cigar number between 1 and #{total}."
+        end
+        display_details
+    end
+
+    def display_details
+        cigar = Cigar.get_cigar_by_id(@cigar_id)
+        puts ""
+        puts "Here are the details for #{cigar.name}:"
+        puts ""
+        puts "Brand: #{cigar.brand}"
+        puts "Length: #{cigar.length}"
+        puts "Gauge: #{cigar.gauge}"
+        puts "Country: #{cigar.country}"
+        puts "Filler: #{cigar.filler}"
+        puts "Wrapper: #{cigar.wrapper}"
+        puts "Color: #{cigar.color}"
+        puts "Strength: #{cigar.strength}"
         puts "To return to brands, type 'Brands' again."
         puts "To exit the program, type 'Exit'."
         menu
