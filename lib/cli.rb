@@ -1,5 +1,3 @@
-
-
 class CLI
     attr_accessor :page_number
 
@@ -47,7 +45,7 @@ class CLI
         puts "Thank you! Here are the results for page #{@page_number}:"
         puts ""
         Brand.all.each do | brand |
-           puts "#{brand.brand_id}. #{brand.name}"
+           puts "#{brand.id}. #{brand.name}"
         end
         puts ""
         puts "To see a different page, type 'Brands' again."
@@ -63,8 +61,7 @@ class CLI
             break if @brand_id.between?(1, 50)
             puts "Invalid input:  Please choose a brand number between 1 and 50."
         end
-        link = Brand.get_brand_by_id(@brand_id).link
-        @cigar_object.new_from_link(link, Brand.get_brand_by_id(@brand_id).name)
+        @cigar_object.new_from_link(Brand.get_by_id(@brand_id).link, Brand.get_by_id(@brand_id).name)
         display_cigars
     end
 
@@ -73,7 +70,7 @@ class CLI
         puts "Thank you! Here are your results:"
         puts ""
         Cigar.all.each do |cigar|
-            puts "#{cigar.cigar_id}. #{cigar.name}"
+            puts "#{cigar.id}. #{cigar.name}"
         end
         puts ""
         puts "To return to brands, type 'Brands' again."
@@ -94,7 +91,7 @@ class CLI
     end
 
     def display_details
-        cigar = Cigar.get_cigar_by_id(@cigar_id)
+        cigar = Cigar.get_by_id(@cigar_id)
         puts ""
         puts "Here are the details for #{cigar.name}:"
         puts ""
@@ -106,6 +103,7 @@ class CLI
         puts "Wrapper: #{cigar.wrapper}"
         puts "Color: #{cigar.color}"
         puts "Strength: #{cigar.strength}"
+        puts ""
         puts "To return to brands, type 'Brands' again."
         puts "To exit the program, type 'Exit'."
         menu

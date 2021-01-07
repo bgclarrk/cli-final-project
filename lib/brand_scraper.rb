@@ -1,5 +1,3 @@
-
-
 class BrandScraper
 
     def new_from_url(page_number = 1)

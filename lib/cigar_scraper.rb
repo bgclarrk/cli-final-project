@@ -1,5 +1,3 @@
-
-
 class CigarScraper
 
     def new_from_link(link, brand)
