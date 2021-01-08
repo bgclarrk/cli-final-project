@@ -95,14 +95,14 @@ class CLI
         puts ""
         puts "Here are the details for #{cigar.name}:"
         puts ""
-        puts "Brand: #{cigar.brand}"
-        puts "Length: #{cigar.length}"
-        puts "Gauge: #{cigar.gauge}"
-        puts "Country: #{cigar.country}"
-        puts "Filler: #{cigar.filler}"
-        puts "Wrapper: #{cigar.wrapper}"
-        puts "Color: #{cigar.color}"
-        puts "Strength: #{cigar.strength}"
+        cigar.brand.empty? ? (puts "Brand: Not Available") : (puts "Brand: #{cigar.brand}")
+        cigar.length.empty? ? (puts "Length: Not Available") : (puts "Length: #{cigar.length}")
+        cigar.gauge.empty? ? (puts "Gauge: Not Available") : (puts "Gauge: #{cigar.gauge}")
+        cigar.country.empty? ? (puts "Country: Not Available") : (puts "Country: #{cigar.country}")
+        cigar.filler.empty? ? (puts "Filler: Not Available") : (puts "Filler: #{cigar.filler}")
+        cigar.wrapper.empty? ? (puts "Wrapper: Not Available") : (puts "Wrapper: #{cigar.wrapper}")
+        cigar.color.empty? ? (puts "Color: Not Available") : (puts "Color: #{cigar.color}")
+        cigar.strength.empty? ? (puts "Strength: Not Available") : (puts "Strength: #{cigar.strength}")
         puts ""
         puts "To return to brands, type 'Brands' again."
         puts "To exit the program, type 'Exit'."
