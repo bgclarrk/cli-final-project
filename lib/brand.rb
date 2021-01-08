@@ -16,7 +16,7 @@ class Brand
     end
 
     def self.cigar_total_by_brand(id)
-        brand = self.get_by_id(id)
+        brand = self.get_by_id(id).name
         Cigar.all.count { |cigar| cigar.brand == brand }
     end
 

@@ -84,7 +84,7 @@ class CLI
         loop do
             puts "To see the details for a specific cigar, type the number associated with that cigar:"
             @cigar_id = gets.chomp.to_i
-            break if @cigar_id.between?(0, 50) #update back to total
+            break if @cigar_id.between?(0, total)
             puts "Invalid input:  Please choose a cigar number between 1 and #{total}."
         end
         display_details
