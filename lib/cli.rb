@@ -95,7 +95,7 @@ class CLI
         puts ""
         puts "Here are the details for #{cigar.name}:"
         puts ""
-        cigar.brand.empty? ? (puts "Brand: Not Available") : (puts "Brand: #{cigar.brand}")
+        cigar.brand.name.empty? ? (puts "Brand: Not Available") : (puts "Brand: #{cigar.brand.name}")
         cigar.length.empty? ? (puts "Length: Not Available") : (puts "Length: #{cigar.length}")
         cigar.gauge.empty? ? (puts "Gauge: Not Available") : (puts "Gauge: #{cigar.gauge}")
         cigar.country.empty? ? (puts "Country: Not Available") : (puts "Country: #{cigar.country}")

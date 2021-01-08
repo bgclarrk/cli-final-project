@@ -23,8 +23,8 @@ class Cigar
     end
 
     def assign_brand(brand)
-        brand = Brand.get_by_name(brand)
-        brand.cigars << self
+        @brand = Brand.get_by_name(brand)
+        @brand.cigars << self
     end
 
 end
