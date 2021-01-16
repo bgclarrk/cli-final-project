@@ -48,22 +48,7 @@ The user can then choose cigars and view all the cigars for each brand
 4. Chacaro Black Stallion Darkhan's Blue Ribbon
 5. Chacaro Black Stallion Filly
 6. Chacaro Black Stallion Trophy
-```
-
-## Running the tests
-
-There are no rspec tests for this program
-
-### Break down into end to end tests
-
-N/A
-
-### And coding style tests
-
-N/A
-
-## Deployment
-
+```s
 
 
 ## Built With
@@ -77,7 +62,7 @@ Please read [CONTRIBUTING.md](https://github.com/bgclarrk/cli-final-project/blob
 
 ## Versioning
 
-Versioning is not currently implemented
+1.0.0
 
 ## Authors
 
