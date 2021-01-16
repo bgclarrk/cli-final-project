@@ -62,6 +62,7 @@ class CLI
             puts "Invalid input:  Please choose a brand number between 1 and 50."
         end
         @cigar_object.new_from_link(Brand.get_by_id(@brand_id).link, Brand.get_by_id(@brand_id).name)
+        binding.pry
         display_cigars
     end
 
